@@ -3,6 +3,7 @@ const express = require('express');
 const Schemes = require('./scheme-model.js');
 
 const router = express.Router();
+router.use(express.json());
 
 router.get('/', async (req, res) => {
   try {
@@ -53,6 +54,7 @@ router.post('/', async (req, res) => {
     res.status(201).json(scheme);
   } catch (err) {
     res.status(500).json({ message: 'Failed to create new scheme' });
+    console.log(err)
   }
 });
 
